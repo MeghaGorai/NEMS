@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Election Management System - Login</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: url("edited india amage.jpeg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        width: 350px;
+        background: #0f172a;
+        /* backdrop-filter: blur(10px); */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 30px 50px rgba(0,0,0,0.2);
+        transform: translateY(-50px);
+        opacity: 0;
+        animation: fadeSlide 2s forwards;
+    }
+
+    @keyframes fadeSlide {
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #f3f4f6;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background: #0d47a1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background: #1565c0;
+    }
+
+    .link {
+        text-align: center;
+        margin-top: 10px;
+        cursor: pointer;
+        color: #f4f6f9;
+    }
+
+    .link:hover {
+        text-decoration: underline;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .success {
+        color: green;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .error {
+        color: red;
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <!-- Login Form -->
+    <div id="loginForm">
+        <h2><i class="fa-solid fa-user"></i>Election Login <i class="fa-sharp fa-solid fa-arrow-left-to-bracket"></i></h2>
+        <input type="text" id="username" placeholder="Username / Voter ID">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <div class="link" onclick="showForgot()">Forgot Password?</div>
+        <div id="loginMsg"></div>
+    </div>
+
+    <!-- Forgot Password Form -->
+    <div id="forgotForm" class="hidden">
+        <h2><i class="fa-solid fa-user"></i>Reset Password</h2>
+        <input type="email" id="email" placeholder="Enter Registered Email">
+        <button onclick="resetPassword()">Send Reset Link</button>
+        <div class="link" onclick="showLogin()">Back to Login</div>
+        <div id="resetMsg"></div>
+    </div>
+</div>
+
+<script>
+    function login() {
+        const user = document.getElementById("username").value;
+        const pass = document.getElementById("password").value;
+        const msg = document.getElementById("loginMsg");
+
+        if (user === "" || pass === "") {
+            msg.innerHTML = "<div class='error'>Please fill all fields</div>";
+        } else {
+            msg.innerHTML = "<div class='success'>Login Successful (Demo)</div>";
+        }
+    }
+
+    function showForgot() {
+        document.getElementById("loginForm").classList.add("hidden");
+        document.getElementById("forgotForm").classList.remove("hidden");
+    }
+
+    function showLogin() {
+        document.getElementById("forgotForm").classList.add("hidden");
+        document.getElementById("loginForm").classList.remove("hidden");
+    }
+
+    function resetPassword() {
+        const email = document.getElementById("email").value;
+        const msg = document.getElementById("resetMsg");
+
+        if (email === "") {
+            msg.innerHTML = "<div class='error'>Enter your email</div>";
+        } else {
+            msg.innerHTML = "<div class='success'>Reset link sent (Demo)</div>";
+        }
+    }
+</script>
+
+</body>
+</html>
