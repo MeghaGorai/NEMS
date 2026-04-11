@@ -6,6 +6,25 @@ const refreshButton = document.getElementById('refresh-button');
 const notificationBadge = document.getElementById('notification-badge');
 const notificationList = document.getElementById('notification-list');
 
+// Dashboard Integration
+function trackAdminAccess() {
+    sessionStorage.setItem('lastAdminAccess', new Date().toISOString());
+    sessionStorage.setItem('currentPage', 'admin');
+}
+
+function getDashboardStats() {
+    return {
+        votersRegistered: parseInt(document.getElementById('voter-count').textContent.replace(/,/g, '')),
+        candidatesActive: parseInt(document.getElementById('candidate-count').textContent),
+        nextElection: document.getElementById('next-election').textContent,
+        securityAlerts: parseInt(document.getElementById('security-alerts').textContent)
+    };
+}
+
+function saveDashboardState() {
+    sessionStorage.setItem('adminDashboardState', JSON.stringify(getDashboardStats()));
+}
+
 const notificationTemplates = [
     'New voter approval pending review.',
     'Candidate profile updated for East Zone.',
@@ -139,7 +158,16 @@ quickButtons.forEach(button => {
 refreshButton.addEventListener('click', refreshDashboard);
 
 window.addEventListener('DOMContentLoaded', () => {
+    trackAdminAccess();
     activatePanel('dashboard');
     renderNotifications();
     setInterval(scheduleNotification, 14000);
+    setInterval(saveDashboardState, 5000); // Save state every 5 seconds
+});
+
+// Keyboard shortcut to go back to dashboard (Ctrl + Home)
+document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 'Home') {
+        window.location.href = 'dash.html';
+    }
 });

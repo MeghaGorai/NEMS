@@ -6,6 +6,21 @@ const navItems = document.querySelectorAll('.nav-item');
 const sections = document.querySelectorAll('.section');
 const pageTitle = document.getElementById('page-title');
 
+// Dashboard Integration
+function trackDashboardAccess() {
+    sessionStorage.setItem('lastDashboardAccess', new Date().toISOString());
+    sessionStorage.setItem('currentPage', 'dashboard');
+}
+
+function getAdminStats() {
+    return {
+        lastAdminAccess: sessionStorage.getItem('lastAdminAccess'),
+        adminState: JSON.parse(sessionStorage.getItem('adminDashboardState') || '{}')
+    };
+}
+
+trackDashboardAccess();
+
 // Live Clock
 function updateClock() {
     const now = new Date();
@@ -302,6 +317,10 @@ document.addEventListener('keydown', (e) => {
         sidebar.classList.toggle('collapsed');
         mainContent.classList.toggle('collapsed');
     }
+    // Ctrl + End to open admin panel
+    if (e.ctrlKey && e.key === 'End') {
+        window.location.href = 'admin.html';
+    }
 });
 
 // Loading animation
@@ -393,39 +412,6 @@ function showPartyDetails(party, votes) {
     // Simple alert for now - in real app, this would show a modal
     alert(`${party}: ${votes} votes\nPercentage: ${((votes / resultsChart.data.datasets[0].data.reduce((a, b) => a + b, 0)) * 100).toFixed(1)}%`);
 }
-
-// Weather widget (fascinating extra feature)
-const weatherWidget = document.createElement('div');
-weatherWidget.className = 'weather-widget';
-weatherWidget.innerHTML = `
-    <i class="fas fa-cloud-sun"></i>
-    <div class="weather-info">
-        <span class="temp">24°C</span>
-        <span class="condition">Sunny</span>
-    </div>
-`;
-weatherWidget.style.position = 'fixed';
-weatherWidget.style.top = '20px';
-weatherWidget.style.right = '20px';
-weatherWidget.style.background = 'rgba(255, 255, 255, 0.9)';
-weatherWidget.style.backdropFilter = 'blur(10px)';
-weatherWidget.style.padding = '10px 15px';
-weatherWidget.style.borderRadius = '20px';
-weatherWidget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-weatherWidget.style.display = 'flex';
-weatherWidget.style.alignItems = 'center';
-weatherWidget.style.gap = '10px';
-weatherWidget.style.zIndex = '1000';
-
-document.body.appendChild(weatherWidget);
-
-// Animate weather widget
-setInterval(() => {
-    const temps = ['22°C', '24°C', '26°C', '23°C', '25°C'];
-    const conditions = ['Sunny', 'Cloudy', 'Rainy', 'Clear'];
-    weatherWidget.querySelector('.temp').textContent = temps[Math.floor(Math.random() * temps.length)];
-    weatherWidget.querySelector('.condition').textContent = conditions[Math.floor(Math.random() * conditions.length)];
-}, 10000);
 
 // Performance monitoring (extra feature)
 let fps = 0;

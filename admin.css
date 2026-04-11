@@ -176,6 +176,17 @@ button {
     transform: translateY(-2px);
     background: #22d3ee;
 }
+
+/* Support for links styled as primary buttons */
+a.primary {
+    text-decoration: none;
+    display: inline-block;
+}
+
+a.primary:hover {
+    transform: translateY(-2px);
+    background: #22d3ee;
+}
 .secondary {
     background: rgba(255,255,255,0.08);
     color: var(--text);
