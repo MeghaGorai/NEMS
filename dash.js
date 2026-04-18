@@ -6,21 +6,6 @@ const navItems = document.querySelectorAll('.nav-item');
 const sections = document.querySelectorAll('.section');
 const pageTitle = document.getElementById('page-title');
 
-// Dashboard Integration
-function trackDashboardAccess() {
-    sessionStorage.setItem('lastDashboardAccess', new Date().toISOString());
-    sessionStorage.setItem('currentPage', 'dashboard');
-}
-
-function getAdminStats() {
-    return {
-        lastAdminAccess: sessionStorage.getItem('lastAdminAccess'),
-        adminState: JSON.parse(sessionStorage.getItem('adminDashboardState') || '{}')
-    };
-}
-
-trackDashboardAccess();
-
 // Live Clock
 function updateClock() {
     const now = new Date();
@@ -31,10 +16,20 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
+const initialActiveNav = document.querySelector('.nav-item.active');
+if (initialActiveNav) {
+    pageTitle.textContent = initialActiveNav.querySelector('span').textContent;
+}
+
 // Navigation
 navItems.forEach(item => {
     item.addEventListener('click', () => {
         const sectionId = item.getAttribute('data-section');
+
+        if (sectionId === 'admin') {
+            window.location.href = 'admin.html';
+            return;
+        }
 
         // Update active nav item
         navItems.forEach(nav => nav.classList.remove('active'));
@@ -316,10 +311,6 @@ document.addEventListener('keydown', (e) => {
         e.preventDefault();
         sidebar.classList.toggle('collapsed');
         mainContent.classList.toggle('collapsed');
-    }
-    // Ctrl + End to open admin panel
-    if (e.ctrlKey && e.key === 'End') {
-        window.location.href = 'admin.html';
     }
 });
 
