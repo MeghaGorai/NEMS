@@ -1,0 +1,101 @@
+ body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #0f172a;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1c1c1c;
+    color: white;
+    padding: 1rem 2rem;
+  }
+  nav h2 {
+    margin: 0;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  nav li, nav a {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+  }
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 3rem 2rem;
+    background: #0f172a;
+    color: #e0e0e0;
+  }
+  .hero img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+  }
+  .hero-text h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .features, .results, .election-info {
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .feature-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    /* color: #e0e0e0; */
+  }
+  .card {
+    background: #e0e0e0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    min-width: 150px;
+    font-weight: 500;
+  }
+  table {
+    margin: 1.5rem auto;
+    border-collapse: collapse;
+    width: 80%;
+  }
+  th, td {
+    border: 1px solid #aaa;
+    padding: 0.75rem;
+    text-align: center;
+    color: #e0e0e0;
+  }
+  footer {
+    background: #1c1c1c;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  h2{
+    color: #e0e0e0;
+  }
+  footer p{
+    color: #e0e0e0;
+  }
+  #bget{
+    height: 10vh;
+    width: 12vw;
+    border-radius: 45%;
+    /* background-color: #1f2e51; */
+  }
+  button:hover{
+    background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+  }
+  
+  #circle{
+    padding-left: 13%;
+    display: flex;
+    justify-content: center;
+  }

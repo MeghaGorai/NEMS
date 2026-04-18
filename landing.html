@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>National Election Management System</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="landing.css">
+
+<!-- Chart.js CDN -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+<link rel="stylesheet" href="landing.css">
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+  <h2>eVote System</h2>
+  <ul>
+    <li onclick="scrollToSection('home')">Home</li>
+    <li onclick="scrollToSection('election-info')">Election Info</li>
+    <li onclick="scrollToSection('results')">Results Dashboard</li>
+    <li onclick="scrollToSection('about')">Support & Feedback</li>
+    <li onclick="login()"><a href="loginakash.html">Login</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>National Election Management System</h1>
+    <p>Secure, transparent and efficient online voting platform for modern elections.</p>
+    <button onclick="login()" id="bget">Get Started</button>
+  </div>
+  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Voting Icon">
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+  <h2 style="color: #e0e0e0;">Key Features</h2>
+  <div class="feature-box">
+    <div class="card">🔐 Secure Voting</div>
+    <div class="card">⚡ Fast Results</div>
+    <div class="card">📊 Real-time Analytics</div>
+    <div class="card">🌍 Accessible Anywhere</div>
+  </div>
+</section>
+
+<!-- Election Info -->
+<section class="election-info" id="election-info">
+  <h2 >Election Info</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Candidate</th>
+        <th>Party</th>
+        <th>Votes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Jane Doe</td>
+        <td>Democratic Party</td>
+        <td>1200</td>
+      </tr>
+      <tr>
+        <td>John Smith</td>
+        <td>Republican Party</td>
+        <td>950</td>
+      </tr>
+      <tr>
+        <td>Alex Lee</td>
+        <td>Independent</td>
+        <td>450</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Results Dashboard -->
+<section class="results" id="results">
+  <h2>Results Dashboard</h2>
+  <!-- <canvas id="resultsChart" width="400" height="400"></canvas> -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div id="circle" style="width:70vw; height:70vh;">
+  <canvas id="myPieChart"></canvas>
+</div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <h2>About System</h2>
+  <p style="color: #e0e0e0;">
+    This system ensures transparency, security, and efficiency in conducting elections digitally.
+    It allows administrators to manage voters, candidates, and results seamlessly.
+  </p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p style="color: #e0e0e0;">© 2026 National Election System | All Rights Reserved</p>
+  <p style="color: #e0e0e0;">Contact: support@evote.gov</p>
+</footer>
+
+<script src="landing.js"></script>
+
+    <!-- <script src="pie.js"></script> -->
+</body>
+</html>
