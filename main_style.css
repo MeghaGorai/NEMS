@@ -301,9 +301,9 @@ button:focus,
 }
 
 .verified {
-    background-color: #6837bc;
-    color: #f8fafc;
-    border: 1px solid rgba(168, 85, 247, 0.45);
+    background-color: rgba(76, 175, 80, 0.18);
+    color: #e7ffea;
+    border: 1px solid rgba(76, 175, 80, 0.35);
     width: auto;
     padding: 12px 24px;
 }
@@ -313,9 +313,9 @@ button:focus,
 }
 
 .pending {
-    background-color: rgba(56, 189, 248, 0.15);
-    color: #0c4a6e;
-    border: 1px solid rgba(59, 130, 246, 0.35);
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #ffe4e4;
+    border: 1px solid rgba(239, 68, 68, 0.35);
 }
 
 .charts-section {
@@ -517,9 +517,16 @@ button:focus,
         right: 0;
         top: 44px;
     }
+}
 
-    .bar-container {
-        height: 220px;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
