@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main_style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">🗳 EMMS</div>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#profile">Profile</a>
+            <a href="#live">Live Voting</a>
+            <a href="#news">News</a>
+            <a href="#services">Services</a>
+        </nav>
+
+        <div class="actions">
+            <div class="menu">
+                <button onclick="toggleMenu()">⋮</button>
+                <div class="dropdown" id="dropdown">
+                    <a href="edit-profile.html">Edit Profile</a>
+                    <a href="voting.html">Voting Now</a>
+                    <a href="history.html">Election History</a>
+                </div>
+            </div>
+            <button class="hamburger" onclick="toggleNav()">☰</button>
+        </div>
+    </header>
+
+    <main class="page-wrap">
+        <section class="profile-container reveal">
+            <div class="info-section">
+                <div class="info-box">
+                    <label>Name</label>
+                    <p>John Doe</p>
+                </div>
+                <div class="info-box">
+                    <label>Voter ID</label>
+                    <p>ABC1234567</p>
+                </div>
+                <div class="info-box">
+                    <label>State / District</label>
+                    <p>West Bengal / Kolkata</p>
+                </div>
+                <div class="info-box">
+                    <label>Age / Gender</label>
+                    <p>25 / Male</p>
+                </div>
+                <div class="info-box full-row">
+                    <label>Contact Info</label>
+                    <p>+91 98765 43210 | john.doe@email.com</p>
+                </div>
+            </div>
+
+            <aside class="photo-section">
+                <div class="image-wrapper">
+                    <img src="https://img.freepik.com/premium-photo/funny-3d-cartoon-teenage-boy_979495-14510.jpg" alt="Profile Photo">
+                </div>
+                <div class="status-badge verified">
+                    <span>Verified</span>
+                </div>
+            </aside>
+        </section>
+
+        <section class="charts-section">
+            <div class="chart-card reveal">
+                <h2>Live Voting Overview</h2>
+                <div class="chart-bars">
+                    <div class="bar-item">
+                        <span class="bar-label">Total People</span>
+                        <div class="bar-container">
+                            <div class="bar blue-bar" id="totalPeopleBar" style="height: 0%"></div>
+                        </div>
+                        <span class="bar-value" id="totalPeopleValue">0</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="bar-label">People Voted</span>
+                        <div class="bar-container">
+                            <div class="bar green-bar" id="votedPeopleBar" style="height: 0%"></div>
+                        </div>
+                        <span class="bar-value" id="votedPeopleValue">0</span>
+                    </div>
+                </div>
+                <p class="chart-note">Data refreshes every 5 minutes.</p>
+            </div>
+
+            <div class="chart-card reveal">
+                <h2>Last Year Party Votes</h2>
+                <div class="chart-bars">
+                    <div class="bar-item">
+                        <span class="bar-label">TMC</span>
+                        <div class="bar-container">
+                            <div class="bar orange-bar" id="tmcBar" style="height: 0%"></div>
+                        </div>
+                        <span class="bar-value" id="tmcValue">0</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="bar-label">BJP</span>
+                        <div class="bar-container">
+                            <div class="bar red-bar" id="bjpBar" style="height: 0%"></div>
+                        </div>
+                        <span class="bar-value" id="bjpValue">0</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="bar-label">INC</span>
+                        <div class="bar-container">
+                            <div class="bar yellow-bar" id="incBar" style="height: 0%"></div>
+                        </div>
+                        <span class="bar-value" id="incValue">0</span>
+                    </div>
+                </div>
+                <p class="chart-note">Last year vote count by party.</p>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
