@@ -366,6 +366,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.16);
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
     transition: transform 0.3s ease, background 0.3s ease;
+    cursor: pointer;
 }
 
 .quick-link:hover {

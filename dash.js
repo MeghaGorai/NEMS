@@ -3,6 +3,7 @@ const sidebar = document.querySelector('.sidebar');
 const mainContent = document.querySelector('.main-content');
 const menuToggle = document.querySelector('.menu-toggle');
 const navItems = document.querySelectorAll('.nav-item');
+const quickLinks = document.querySelectorAll('[data-target]');
 const sections = document.querySelectorAll('.section');
 const pageTitle = document.getElementById('page-title');
 
@@ -31,19 +32,42 @@ navItems.forEach(item => {
             return;
         }
 
-        // Update active nav item
-        navItems.forEach(nav => nav.classList.remove('active'));
-        item.classList.add('active');
-
-        // Update active section
-        sections.forEach(section => section.classList.remove('active'));
-        document.getElementById(sectionId).classList.add('active');
-
-        // Update page title
-        const title = item.querySelector('span').textContent;
-        pageTitle.textContent = title;
+        setActiveSection(sectionId, item);
     });
 });
+
+quickLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        const targetSection = link.dataset.target;
+        if (targetSection === 'admin') {
+            window.location.href = 'admin.html';
+            return;
+        }
+        setActiveSection(targetSection);
+    });
+});
+
+function setActiveSection(sectionId, navItem = null) {
+    if (!sectionId) return;
+
+    // Update active nav item
+    navItems.forEach(nav => nav.classList.remove('active'));
+    if (navItem) {
+        navItem.classList.add('active');
+    } else {
+        const matchingNav = Array.from(navItems).find(nav => nav.dataset.section === sectionId);
+        if (matchingNav) matchingNav.classList.add('active');
+    }
+
+    // Update active section
+    sections.forEach(section => section.classList.remove('active'));
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) targetSection.classList.add('active');
+
+    // Update page title
+    const title = targetSection ? (navItem ? navItem.querySelector('span').textContent : document.querySelector(`.nav-item[data-section="${sectionId}"] span`)?.textContent) : null;
+    if (title) pageTitle.textContent = title;
+}
 
 // Sidebar toggle
 menuToggle.addEventListener('click', () => {
