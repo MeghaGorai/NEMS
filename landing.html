@@ -1,114 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>National Election Management System</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEMS – National Election Management System</title>
+  <meta name="description" content="Secure, transparent and efficient online voting platform for modern elections. Monitor voter participation and results in real-time.">
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="landing.css">
-
-<!-- Chart.js CDN -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-
-<link rel="stylesheet" href="landing.css">
-
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="landing.css">
 </head>
 
 <body>
 
-<!-- Navbar -->
-<nav>
-  <h2>eVote System</h2>
-  <ul>
-    <li onclick="scrollToSection('home')">Home</li>
-    <li onclick="scrollToSection('election-info')">Election Info</li>
-    <li onclick="scrollToSection('results')">Results Dashboard</li>
-    <li onclick="scrollToSection('about')">Support & Feedback</li>
-    <li onclick="login()"><a href="loginakash.html">Login</a></li>
-  </ul>
-</nav>
+  <!-- Animated Particles -->
+  <div class="particles-container" id="particles"></div>
 
-<!-- Hero -->
-<section class="hero" id="home">
-  <div class="hero-text">
-    <h1>National Election Management System</h1>
-    <p>Secure, transparent and efficient online voting platform for modern elections.</p>
-    <button onclick="login()" id="bget">Get Started</button>
-  </div>
-  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Voting Icon">
-</section>
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="nav-brand">
+      <div class="logo-icon">🗳️</div>
+      <h2>eVote System</h2>
+    </div>
+    <ul>
+      <li onclick="scrollToSection('home')"><i class="fas fa-home"></i> Home</li>
+      <li onclick="scrollToSection('features')">Features</li>
+      <li onclick="scrollToSection('election-info')">Election Info</li>
+      <li onclick="scrollToSection('results')">Results</li>
+      <li onclick="scrollToSection('about')">About</li>
+      <li class="nav-cta"><a href="loginakash.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+    </ul>
+  </nav>
 
-<!-- Features -->
-<section class="features" id="features">
-  <h2 style="color: #e0e0e0;">Key Features</h2>
-  <div class="feature-box">
-    <div class="card">🔐 Secure Voting</div>
-    <div class="card">⚡ Fast Results</div>
-    <div class="card">📊 Real-time Analytics</div>
-    <div class="card">🌍 Accessible Anywhere</div>
-  </div>
-</section>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Live Election System
+      </div>
+      <h1>
+        National <span class="gradient-word">Election</span><br>
+        Management System
+      </h1>
+      <p>
+        Secure, transparent, and efficient online voting platform for modern democracy.
+        Monitor participation, track results, and ensure electoral integrity — all in one place.
+      </p>
+      <div class="hero-buttons">
+        <a href="loginakash.html" class="btn-primary" id="bget">
+          <i class="fas fa-vote-yea"></i> Get Started
+        </a>
+        <button class="btn-secondary" onclick="scrollToSection('results')">
+          <i class="fas fa-chart-pie"></i> View Results
+        </button>
+      </div>
+      <div class="hero-stats-row">
+        <div class="hero-stat">
+          <span class="number">92K+</span>
+          <span class="label">Registered Voters</span>
+        </div>
+        <div class="hero-stat">
+          <span class="number">543</span>
+          <span class="label">Constituencies</span>
+        </div>
+        <div class="hero-stat">
+          <span class="number">99.98%</span>
+          <span class="label">Uptime</span>
+        </div>
+      </div>
+    </div>
 
-<!-- Election Info -->
-<section class="election-info" id="election-info">
-  <h2 >Election Info</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Candidate</th>
-        <th>Party</th>
-        <th>Votes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Jane Doe</td>
-        <td>Democratic Party</td>
-        <td>1200</td>
-      </tr>
-      <tr>
-        <td>John Smith</td>
-        <td>Republican Party</td>
-        <td>950</td>
-      </tr>
-      <tr>
-        <td>Alex Lee</td>
-        <td>Independent</td>
-        <td>450</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
+    <div class="hero-visual">
+      <div class="hero-img-wrapper">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Voting Icon">
+      </div>
+    </div>
+  </section>
 
-<!-- Results Dashboard -->
-<section class="results" id="results">
-  <h2>Results Dashboard</h2>
-  <!-- <canvas id="resultsChart" width="400" height="400"></canvas> -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<div id="circle" style="width:70vw; height:70vh;">
-  <canvas id="myPieChart"></canvas>
-</div>
-</section>
+  <div class="section-divider"></div>
 
-<!-- About -->
-<section class="about" id="about">
-  <h2>About System</h2>
-  <p style="color: #e0e0e0;">
-    This system ensures transparency, security, and efficiency in conducting elections digitally.
-    It allows administrators to manage voters, candidates, and results seamlessly.
-  </p>
-</section>
+  <!-- ===== FEATURES ===== -->
+  <section class="features" id="features">
+    <div class="section-header reveal">
+      <div class="section-tag">Why Choose Us</div>
+      <h2>Key Features</h2>
+      <p>Everything you need for a modern, secure and efficient election.</p>
+    </div>
+    <div class="feature-box">
+      <div class="card reveal">
+        <span class="card-icon">🔐</span>
+        <span class="card-title">Secure Voting</span>
+        <p class="card-desc">End-to-end encrypted ballots with multi-factor authentication and blockchain-backed audit trails.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-icon">⚡</span>
+        <span class="card-title">Fast Results</span>
+        <p class="card-desc">Real-time vote counting with instant result publishing as soon as polling closes.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-icon">📊</span>
+        <span class="card-title">Live Analytics</span>
+        <p class="card-desc">Interactive dashboards with live charts, constituency maps and trend analysis.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-icon">🌍</span>
+        <span class="card-title">Accessible Anywhere</span>
+        <p class="card-desc">Vote from any device, any location. Optimised for desktop, tablet and mobile.</p>
+      </div>
+    </div>
+  </section>
 
-<!-- Footer -->
-<footer>
-  <p style="color: #e0e0e0;">© 2026 National Election System | All Rights Reserved</p>
-  <p style="color: #e0e0e0;">Contact: support@evote.gov</p>
-</footer>
+  <div class="section-divider"></div>
 
-<script src="landing.js"></script>
+  <!-- ===== ELECTION INFO ===== -->
+  <section class="election-info" id="election-info">
+    <div class="section-header reveal">
+      <div class="section-tag">Current Data</div>
+      <h2>Election Info</h2>
+      <p>Live snapshot of candidate standings.</p>
+    </div>
+    <table class="reveal">
+      <thead>
+        <tr>
+          <th><i class="fas fa-user"></i> Candidate</th>
+          <th><i class="fas fa-flag"></i> Party</th>
+          <th><i class="fas fa-vote-yea"></i> Votes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jane Doe</td>
+          <td>Democratic Party</td>
+          <td><strong>1,200</strong></td>
+        </tr>
+        <tr>
+          <td>John Smith</td>
+          <td>Republican Party</td>
+          <td><strong>950</strong></td>
+        </tr>
+        <tr>
+          <td>Alex Lee</td>
+          <td>Independent</td>
+          <td><strong>450</strong></td>
+        </tr>
+        <tr>
+          <td>Peter Wang</td>
+          <td>Green Alliance</td>
+          <td><strong>250</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-    <!-- <script src="pie.js"></script> -->
+  <div class="section-divider"></div>
+
+  <!-- ===== RESULTS DASHBOARD ===== -->
+  <section class="results" id="results">
+    <div class="section-header reveal">
+      <div class="section-tag">Live Results</div>
+      <h2>Results Dashboard</h2>
+      <p>Real-time vote distribution across all candidates.</p>
+    </div>
+    <div id="circle" class="reveal">
+      <canvas id="myPieChart"></canvas>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="section-header reveal">
+      <div class="section-tag">About System</div>
+      <h2>Built for Modern Democracy</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          The National Election Management System (NEMS) is a state-of-the-art digital governance platform designed to conduct elections with unmatched security, transparency, and operational efficiency.
+        </p>
+        <p>
+          It allows administrators to manage voters, candidates, and results seamlessly — while providing citizens with a trustworthy and accessible way to exercise their democratic rights.
+        </p>
+      </div>
+      <div class="about-highlights reveal">
+        <div class="highlight-item">
+          <div class="hi-icon">🛡️</div>
+          <span>End-to-end encryption & voter verification</span>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">📋</div>
+          <span>Complete audit trail & tamper-proof records</span>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">⚙️</div>
+          <span>Seamless admin & candidate management</span>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">📡</div>
+          <span>Real-time data with 99.98% uptime SLA</span>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">🌐</div>
+          <span>Accessible across all devices & locations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-brand">🗳️ eVote System</div>
+    <p>© 2026 National Election Management System | All Rights Reserved</p>
+    <p>Contact: <a href="mailto:support@evote.gov">support@evote.gov</a></p>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="landing.js"></script>
+
+  <script>
+    /* ---- Particle Generator ---- */
+    (function generateParticles() {
+      const container = document.getElementById('particles');
+      const count = 22;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.classList.add('particle');
+        const size = Math.random() * 6 + 3;
+        p.style.cssText = `
+          width: ${size}px;
+          height: ${size}px;
+          left: ${Math.random() * 100}%;
+          animation-duration: ${Math.random() * 14 + 10}s;
+          animation-delay: ${Math.random() * 10}s;
+          opacity: ${Math.random() * 0.5 + 0.1};
+        `;
+        container.appendChild(p);
+      }
+    })();
+
+    /* ---- Scroll Reveal ---- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ---- Active nav highlight on scroll ---- */
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+      });
+    });
+
+    /* ---- Navbar scroll shrink ---- */
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.style.padding = '0.6rem 3rem';
+        nav.style.boxShadow = '0 6px 40px rgba(138, 43, 226, 0.35)';
+      } else {
+        nav.style.padding = '1rem 3rem';
+        nav.style.boxShadow = '0 4px 30px rgba(138, 43, 226, 0.2)';
+      }
+    });
+  </script>
 </body>
 </html>
